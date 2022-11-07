@@ -41,12 +41,10 @@ function copyAssets(directory, folderName) {
                     } catch (error) {
                         fs.mkdir(path.join(direct, folderName), (err) => {
                             if (err) throw err;
-                            console.log('createDir')
                         })
                     }
                 })();
                 dirEntryList.forEach((item) => {
-                    console.log('2')
                     if (item.isDirectory()) {
                         copyAssets(path.join(__dirname, folderName, item.name), path.join(folderName, item.name))
                     } else {
@@ -83,7 +81,6 @@ copyAssets(path.join(__dirname, 'assets'), 'assets');
             let promise = await Promise.all(datamassCss)
             fs.writeFile(path.join(__dirname, 'project-dist', 'style.css'), promise.join``, (err) => {
                 if (err) throw err;
-                console.log('done')
             })
         })();
     } catch (err) {
@@ -137,8 +134,6 @@ copyAssets(path.join(__dirname, 'assets'), 'assets');
         console.error(err.message)
     }
 })();
-
-//console.log(basikHtml.join`\n`)
 
 
 
